@@ -47,8 +47,17 @@
 
         <service id="eglobal_template_cache.twig_extension.template_cache_extension" class="EGlobal\Bundle\TemplateCacheBundle\Twig\Extension\TemplateCacheExtension">
             <argument>%eglobal_template_cache.cache_dir%</argument>
+
             <tag name="twig.extension" />
         </service>
 
+        <!-- Console -->
+
+        <service id="eglobal_template_cache.console.command.dump-template-cache" class="EGlobal\Bundle\TemplateCacheBundle\Command\DumpTemplateCacheCommand">
+            <argument type="service" id="eglobal_template_cache.dumper.template_file_dumper" />
+            <argument type="service" id="eglobal_template_cache.dumper.debug_template_file_dumper" />
+
+            <tag name="console.command" />
+        </service>
     </services>
 </container>
